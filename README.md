@@ -13,7 +13,7 @@ Simply use OpenShift's build capabilities to build and deploy these files:
 
 ```bash
 # Create a new build using this repository
-oc new-build --strategy=docker --name=servicenow-mcp https://github.com/yourusername/servicenow-mcp-openshift.git
+oc new-build --strategy=docker --name=servicenow-mcp https://github.com/rlopez133/servicenow-mcp-openshift.git
 
 # Create the app from the build
 oc new-app servicenow-mcp
