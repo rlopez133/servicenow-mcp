@@ -1,0 +1,39 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: snow-mcp-server
+spec:
+  selector:
+    matchLabels:
+      app: snow-mcp-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: snow-mcp-server
+    spec:
+      containers:
+      - name: snow-mcp-server
+        image: quay.io/redhat-et/mcp-snow:latest
+        imagePullPolicy: Always
+        ports:
+          - name: http
+            containerPort: 8000
+            protocol: TCP
+        env:
+          - name: SERVICENOW_INSTANCE_URL 
+            valueFrom:
+              secretKeyRef:
+                name: servicenow-credentials
+                key: SERVICENOW_INSTANCE_URL
+          - name: SERVICENOW_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: servicenow-credentials
+                key: SERVICENOW_USERNAME
+          - name: SERVICENOW_PASSWORD 
+            valueFrom:
+              secretKeyRef:
+                name: servicenow-credentials
+                key: SERVICENOW_PASSWORD 
+        resources: {}
