@@ -4,7 +4,7 @@ This repository contains the files needed to run the ServiceNow MCP server in Op
 
 ## File
 
-1. **Dockerfile** - Container definition for OpenShift to build the ServiceNow MCP server
+**Dockerfile** - Container definition for OpenShift to build the ServiceNow MCP server
 
 ## Deployment
 
