@@ -16,7 +16,7 @@ RUN pip install -e .
 WORKDIR /mcp_server
 
 # Expose the port
-EXPOSE 8001
+EXPOSE 8000
 
 # Use the recommended command with environment variables for credentials
 # and explicitly use SSE transport for containerized environments
