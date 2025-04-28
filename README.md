@@ -30,7 +30,7 @@ oc set env deployment/servicenow-mcp --from=secret/servicenow-credentials
 oc new-app servicenow-mcp
 
 # Expose the service
-oc expose service/servicenow-mcp --port=8001
+oc expose service/servicenow-mcp --port=8000
 ```
 
 OpenShift will build the container from the Containerfile and deploy it.
