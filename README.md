@@ -11,6 +11,10 @@ This repository contains the files needed to run the ServiceNow MCP server in Op
 Simply use OpenShift's build capabilities to build and deploy:
 
 ```bash
+
+# Create a new project
+oc new-project snow-mcp
+
 # Create a new build using this repository
 oc new-build --strategy=docker --name=servicenow-mcp https://github.com/rlopez133/servicenow-mcp.git
 
