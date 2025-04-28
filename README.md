@@ -1,6 +1,6 @@
 # ServiceNow MCP for OpenShift
 
-This repository contains the files needed to run the ServiceNow MCP server in OpenShift.
+This repository contains the Dockerfile needed to run the ServiceNow MCP server in OpenShift.
 
 ## File
 
