@@ -27,11 +27,11 @@ oc create secret generic servicenow-credentials \
   --from-literal=SERVICENOW_USERNAME=your-username \
   --from-literal=SERVICENOW_PASSWORD=your-password
 
-# Link secret to deployment
-oc set env deployment/servicenow-mcp --from=secret/servicenow-credentials
-
 # Create the app from the build
 oc new-app servicenow-mcp
+
+# Link secret to deployment
+oc set env deployment/servicenow-mcp --from=secret/servicenow-credentials
 
 # Expose the service
 oc expose service/servicenow-mcp --port=8000
