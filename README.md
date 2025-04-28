@@ -2,23 +2,22 @@
 
 This repository contains the files needed to run the ServiceNow MCP server in OpenShift.
 
-## Files
+## File
 
-1. **Containerfile** - Container definition for OpenShift to build the ServiceNow MCP server
-2. **start.py** - Script to initialize and run the MCP server with SSE transport
+1. **Dockerfile** - Container definition for OpenShift to build the ServiceNow MCP server
 
 ## Deployment
 
-Simply use OpenShift's build capabilities to build and deploy these files:
+Simply use OpenShift's build capabilities to build and deploy:
 
 ```bash
 # Create a new build using this repository
 oc new-build --strategy=docker --name=servicenow-mcp https://github.com/rlopez133/servicenow-mcp.git
 
-# Create the app from the build
-oc new-app servicenow-mcp
+# Start the build process
+oc start-build servicenow-mcp --follow
 
-# Create secret for ServiceNow credentials
+# Create secret with ServiceNow credentials
 oc create secret generic servicenow-credentials \
   --from-literal=SERVICENOW_INSTANCE_URL=https://your-instance.service-now.com/ \
   --from-literal=SERVICENOW_USERNAME=your-username \
@@ -26,6 +25,9 @@ oc create secret generic servicenow-credentials \
 
 # Link secret to deployment
 oc set env deployment/servicenow-mcp --from=secret/servicenow-credentials
+
+# Create the app from the build
+oc new-app servicenow-mcp
 
 # Expose the service
 oc expose service/servicenow-mcp --port=8001
